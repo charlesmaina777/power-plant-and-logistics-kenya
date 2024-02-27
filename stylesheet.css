@@ -1,0 +1,13 @@
+/* Add your CSS rules here */
+body {
+  background-color: #fff;
+}
+
+/* Add this CSS to align the navigation bar to the right */
+.nav-wrapper {
+  margin-left: auto;
+}
+
+.active {
+  color: #ff7e67; /* Change to your active color */
+  font-weight: bold; }
