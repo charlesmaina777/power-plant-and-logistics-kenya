@@ -1,20 +1,29 @@
-fetch the data from the database and display it on the page
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuBtn = document.getElementById('menu-btn');
+        const navbar = document.getElementById('navbar');
+
+        if (menuBtn && navbar) {
+            menuBtn.addEventListener('click', function() {
+                navbar.classList.toggle('hidden');
+            });
+        }
+    });
 
 
-
-<script>
     // JavaScript to handle click events and toggle active class
     document.addEventListener("DOMContentLoaded", function() {
-        navLinks = document.querySelectorAll('.nav-link')
+        const navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
             link.addEventListener('click', function(event) {
-                event.preventDefault(); // Prevent default link behavior
-                navLinks.forEach(otherLink => otherLink.classList.remove('active')); // Remove active class from other links
-                this.classList.add('active'); // Add active class to clicked link
+                event.preventDefault(); 
+                navLinks.forEach(otherLink => otherLink.classList.remove('active')); 
+                this.classList.add('active'); 
             });
         });
     });
-</script>
+
+
 
 
 document.addEventListener("DOMContentLoaded", function() {
