@@ -11,32 +11,28 @@
     
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<script>
-    const menuBtn = document.getElementById('menu-btn');
-    const nav = document.getElementById('navbar');
-  
-    menuBtn.addEventListener('click', function() {
-      navbar.classList.toggle('hidden');
-    });
-  </script>
+
 <body>
+    
+
     
     <header class="text-black-600 body-font">
         <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
           <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-            <img src="https://st2.depositphotos.com/14768666/48047/v/600/depositphotos_480473444-stock-illustration-fire-flame-warning-icon-simple.jpg" alt="logo" class="w=10 h-10 rounded-full">
+            <img src="https://st2.depositphotos.com/14768666/48047/v/600/depositphotos_480473444-stock-illustration-fire-flame-warning-icon-simple.jpg" alt="logo" class="w=11 h-11 rounded-full">
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
             </svg>
             <span class="ml-3 text-xl">Power Plant & Logistics KE</span>
           </a>
           <div class="md:ml-auto md:mr-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
             <navbar class="flex flex-wrap">
-              <a href="Home" class="nav-link mr-5 hover:text-gray-900">Home</a>
-              <a href="#About Us" class="nav-link mr-5 hover:text-gray-900">About</a>
-              <a href="Services" class="nav-link mr-5 hover:text-gray-900">Services</a>
-              <a href="Contact Us" class="nav-link mr-5 hover:text-gray-900">Contact</a>
-          </nav>
-          
+                <nav>
+                    <a href="Home" class="nav-link mr-5 hover:text-gray-900">Home</a>
+                    <a href="#About" id="about-link" class="nav-link mr-5 hover:text-gray-900">About</a>
+                    <a href="#Services" id="services-link" class="nav-link mr-5 hover:text-gray-900">Services</a>
+                    <a href="#Contact" id="contact-link" class="nav-link mr-5 hover:text-gray-900">Contact</a>
+                </nav>
+                
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
              
             </svg>
@@ -294,7 +290,7 @@ source.</p>
     <div class="container px-5 py-24 mx-auto">
         <div class="flex flex-col text-center w-full mb-12">
             <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Contact Us</h1>
-            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Share Your Thoughts</p>
+            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Get in Touch with us.</p>
         </div>
         <div class="lg:w-1/2 md:w-2/3 mx-auto">
             <div class="flex flex-wrap -m-2">
@@ -317,15 +313,12 @@ source.</p>
                     </div>
                 </div>
                 <div class="p-2 w-full">
-                    <!-- Add an ID to the button for JavaScript to target -->
                     <button id="submitBtn" class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">SUBMIT</button>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
-<!-- Link your JavaScript file here -->
 <script src="power.js"></script>
 </body>
           <div class="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
@@ -345,7 +338,7 @@ source.</p>
 
   <footer class="text-gray-300 body-font flex justify-center">
     <div class="container mx-auto py-4 px-5">
-        <p class="text-sm text-gray-500 text-center">© 2024 | Power Plant & Logistics KE | All rights reserved</p>
+        <p class="text-sm text-black -500 text-center">© 2024 | Power Plant & Logistics KE | All rights reserved</p>
     </div>
 
     <script>
@@ -356,6 +349,76 @@ source.</p>
           navbar.classList.toggle('hidden');
         });
       </script>
+
+
+     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.getElementById('menu-btn');
+            const navbar = document.getElementById('navbar');
+
+            if (menuBtn && navbar) {
+                menuBtn.addEventListener('click', function() {
+                    navbar.classList.toggle('hidden');
+                });
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    navLinks.forEach(otherLink => otherLink.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+
+   
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const submitBtn = document.getElementById('submitBtn');
+
+            submitBtn.addEventListener('click', function(event) {
+                event.preventDefault();
+                
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+
+                
+                console.log('Name:', name);
+                console.log('Email:', email);
+                console.log('Message:', message);
+            });
+        });
+    </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                const targetId = this.getAttribute('href').substring(1); // Get the target section id without the '#'
+                const targetSection = document.getElementById(targetId);
+                const yOffset = -80; // Adjust this value as needed to offset the scroll position
+                
+                // Scroll to the target section smoothly
+                window.scrollTo({
+                    top: targetSection.offsetTop + yOffset,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
          
       
         </div>
